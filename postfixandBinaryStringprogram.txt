@@ -1,0 +1,115 @@
+class Counter
+{
+private:
+	unsigned int count;         //count
+public:
+	Counter() : count(0)        //constructor  no args
+	{  }
+	Counter(int c) : count(c)   //constructor, one arg
+	{  }
+	unsigned int get_count() const //return count
+	{
+		return count;
+	}
+	Counter operator ++ ()      //increment count (prefix)
+	{                        //increment count, then return
+		return Counter(++count); //an unnamed temporary object
+	}                        //initialized to this count
+	Counter operator ++ (int)   //increment count (postfix)
+	{
+		Counter result; 
+		count++;//return an unnamed temporary
+		result.count = count;
+		return result; //object initialized to this
+	}                        //count, then increment count
+
+};
+#include "Counter.h"
+#include <iostream>
+using namespace std;
+int main()
+{
+	Counter c1, c2;                       //c1=0, c2=0
+	cout << "\nc1 = " << c1.get_count();    //display
+	cout << "\nc2 = " << c2.get_count();
+	++c1;                                 //c1=1
+	c2 = ++c1;                            //c1=2, c2=2 (prefix)
+	cout << "\nc1 = " << c1.get_count();    //display
+	cout << "\nc2 = " << c2.get_count();
+	c2 = c1++; //c1 = 3, c2 = 2 (postfix)
+	cout << "\nc1 = " << c1.get_count();    //display again
+	cout << "\nc2 = " << c2.get_count() << endl;
+	system("pause");
+	return 0;
+}
+#include "BinaryString.h"
+#include<iostream>
+#include<string>
+using namespace std;
+// Function to read the string
+void BinaryString::read()
+{
+	cout << "Enter your string : ";
+	cin >> str;
+	len = strlen(str);
+}
+// Function to print the string
+void BinaryString::print()
+{
+	cout << "Your string is " << str << endl;
+}
+// Function definition for overloading + operator 
+BinaryString BinaryString :: operator*(BinaryString s)
+{
+	BinaryString t;
+
+	strcpy_s(t.str, str);
+	
+	strcat_s(t.str, s.str);
+	t.len = len + s.len;
+
+	return(t);
+}
+// Definition for equal to operator
+int BinaryString :: operator < (BinaryString s)
+{
+	if (strcmp(str, s.str) == 0)
+		return 1;
+	else
+		return 0;
+}
+#pragma once
+class BinaryString
+{
+
+	char str[100];
+	int len;
+
+public:
+	void read();		// for reading string
+	void print();		// for printing string
+	// for overloading addition operator to joint two string
+	BinaryString operator * (BinaryString);
+	// for overloading equal to operator for equality of two string
+	int operator < (BinaryString);
+	
+};
+int main()
+{
+	
+
+	BinaryString s1, s2, s3;
+	s1.read();
+	s2.read();
+
+	s3 = s1 * s2;  // call operator fucntion to join two strings.
+
+	if (s1 < s2)   // call operator function to compare two strings.
+		cout << "Both strings are same" << endl;
+	else
+		cout << "Both strings are different" <<endl ;
+
+		s3.print();    // print string after joining.
+		system("pause");
+		return 0;
+}
