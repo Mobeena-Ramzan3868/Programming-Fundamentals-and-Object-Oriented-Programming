@@ -1,0 +1,134 @@
+Exchange Sort
+#include<iostream>
+#include<iomanip>
+using namespace std;
+void getdata();
+void showdata();
+void sortLogic();
+#define MAX 10
+int arr[MAX], n;
+int main()
+{
+	cout << "\n*****Exchange Sort*****\n";
+	getdata();
+	sortLogic();
+	showdata();
+	system("pause");
+	return 0;
+}
+void getdata()
+{
+
+	cout << "How many elements you require : ";
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> arr[i];
+}
+
+void showdata() {
+	cout << "\n--Display--\n";
+	for (int i = 0; i < n; i++)
+		cout << arr[i] << "   ";
+}
+
+void sortLogic()
+{
+	int temp;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n - 1; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+}
+Sequentioal Search
+include<iostream>
+	using namespace std;
+	int main()
+	{
+		
+		int arr[10], i, num, n, c = 0, pos;
+		cout << "Enter the array size : ";
+		cin >> n;
+		cout << "Enter Array Elements : ";
+		for (i = 0; i < n; i++)
+		{
+			cin >> arr[i];
+		}
+		cout << "Enter the number to be search : ";
+		cin >> num;
+		for (i = 0; i < n; i++)
+		{
+			if (arr[i] == num)
+			{
+				c = 1;
+				pos = i + 1;
+				break;
+			}
+		}
+		if (c == 0)
+		{
+			cout << "Number not found..!!";
+		}
+		else
+		{
+			cout << num << " found at position " << pos;
+		}
+		system("pause");
+		return 0;
+		
+	}
+Passing 2d array to function
+#include <iostream>
+#include <cmath>
+using namespace std;
+/* This method prints the square of each
+ * of the elements of multidimensional array
+ */
+void square(int arr[2][3]) {
+	int result;
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 3; j++) {
+			result = arr[i][j];
+			cout << pow(result, 2) << endl;
+		}
+	}
+}
+int main() {
+	int arr[2][3] = {
+		{1, 2, 3},
+		{4, 5, 6}
+	};
+	square(arr);
+	system("pause");
+	return 0;
+}
+Passing array to function
+#include <iostream>
+using namespace std;
+/* This function adds the corresponding
+ * elements of both the arrays and
+ * displays it.
+ */
+void sum(int arr1[], int arr2[]) {
+	int result[5];
+	for (int i = 0; i < 5; i++) {
+		result[i] = arr1[i] + arr2[i];
+		cout << result[i] << endl;
+	}
+}
+int main() {
+	int a[5] = { 10, 20, 30, 40 ,50 };
+	int b[5] = { 1, 2, 3, 4, 5 };
+	//Passing arrays to function
+	sum(a, b);
+	system("pause");
+	return 0;
+}
+
